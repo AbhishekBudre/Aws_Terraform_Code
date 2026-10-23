@@ -21,3 +21,10 @@ C:\Aws_Terraform_Code\Environment\DNS\.terraform.lock.hcl
 
 C:\Aws_Terraform_Code\Environment\Security\ACM-Global\.terraform
 C:\Aws_Terraform_Code\Environment\Security\ACM-Global\.terraform.lock.hcl
+
+C:\Aws_Terraform_Code\Environment\Static-web-hosting\Storage\Prod\.terraform
+C:\Aws_Terraform_Code\Environment\Static-web-hosting\Storage\Prod\.terraform.lock.hcl
+
+C:\Aws_Terraform_Code\Environment\SSM\Endpoints-Demo\Dev\.terraform
+C:\Aws_Terraform_Code\Environment\SSM\Endpoints-Demo\Dev\.terraform.lock.hcl
+C:\Aws_Terraform_Code\Environment\SSM\VPC\Dev\.terraform
