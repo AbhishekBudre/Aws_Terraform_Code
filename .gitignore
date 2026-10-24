@@ -33,3 +33,5 @@ C:\Aws_Terraform_Code\Environment\Database\RDS\Dev\.terraform
 C:\Aws_Terraform_Code\Environment\Database\RDS\Dev\.terraform.lock.hcl
 C:\Aws_Terraform_Code\Environment\Database\RDS\VPC\Dev\.terraform
 C:\Aws_Terraform_Code\Environment\Database\KMS-Key\Dev\.terraform
+
+C:\Aws_Terraform_Code\Environment\Database\Dynamodb\Prod\.terraform
