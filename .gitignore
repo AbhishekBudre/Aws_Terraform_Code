@@ -28,3 +28,8 @@ C:\Aws_Terraform_Code\Environment\Static-web-hosting\Storage\Prod\.terraform.loc
 C:\Aws_Terraform_Code\Environment\SSM\Endpoints-Demo\Dev\.terraform
 C:\Aws_Terraform_Code\Environment\SSM\Endpoints-Demo\Dev\.terraform.lock.hcl
 C:\Aws_Terraform_Code\Environment\SSM\VPC\Dev\.terraform
+
+C:\Aws_Terraform_Code\Environment\Database\RDS\Dev\.terraform
+C:\Aws_Terraform_Code\Environment\Database\RDS\Dev\.terraform.lock.hcl
+C:\Aws_Terraform_Code\Environment\Database\RDS\VPC\Dev\.terraform
+C:\Aws_Terraform_Code\Environment\Database\KMS-Key\Dev\.terraform
