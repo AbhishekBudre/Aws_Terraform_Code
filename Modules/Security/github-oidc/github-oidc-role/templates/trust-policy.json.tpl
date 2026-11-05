@@ -5,13 +5,13 @@
       "Sid": "GitHubActionsAssumeRole",
       "Effect": "Allow",
       "Principal": {
-        "Federated": "arn:aws:iam::667173675235:oidc-provider/token.actions.githubusercontent.com"
+        "Federated": "${oidc_provider_arn}"
       },
       "Action": "sts:AssumeRoleWithWebIdentity",
       "Condition": {
         "StringEquals": {
           "token.actions.githubusercontent.com:aud": "sts.amazonaws.com",
-          "token.actions.githubusercontent.com:sub": "repo:AbhishekBudre/Aws_Terraform_Code:environment:Development"
+          "token.actions.githubusercontent.com:sub": "repo:${github_owner}/${github_repository}:environment:${github_environment}"
         }
       }
     }
