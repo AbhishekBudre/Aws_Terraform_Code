@@ -1,10 +1,10 @@
-name: abhi.space | Amazon 3 VPC PEERING
+name: abhi.space | Cross-Region 3 VPC Peering
 
 on:
   workflow_dispatch:
     inputs:
       terraform_action:
-        description: Terraform Action
+        description: "Select Terraform Action"
         required: true
         default: apply
         type: choice
@@ -17,10 +17,9 @@ permissions:
   contents: read
 
 jobs:
-
   terraform:
 
-    name: Deploy Amazon VPC Peering
+    name: Deploy Cross-Region VPC Peering
 
     runs-on: ubuntu-22.04
 
@@ -30,7 +29,7 @@ jobs:
     defaults:
       run:
         shell: bash
-        working-directory: environments/vpc-peering/Prod
+        working-directory: Environment/vpc-peering/Prod
 
     steps:
 
@@ -42,15 +41,14 @@ jobs:
         uses: actions/checkout@v4
 
       ############################################################
-      # Configure AWS Credentials
+      # Configure AWS Credentials using GitHub OIDC
       ############################################################
 
       - name: Configure AWS Credentials
         uses: aws-actions/configure-aws-credentials@v5
-
         with:
           role-to-assume: ${{ secrets.AWS_ROLE_ARN }}
-          aws-region: ${{ vars.AWS_REGION }}
+          aws-region: ap-south-1
 
       ############################################################
       # Setup Terraform
@@ -67,7 +65,7 @@ jobs:
         run: terraform init
 
       ############################################################
-      # Terraform Format
+      # Terraform Format Check
       ############################################################
 
       - name: Terraform Format
@@ -85,9 +83,7 @@ jobs:
       ############################################################
 
       - name: Terraform Plan
-
-        if: github.event.inputs.terraform_action == 'apply'
-
+        if: inputs.terraform_action == 'apply'
         run: |
           terraform plan \
             -var-file="terraform.tfvars" \
@@ -98,9 +94,7 @@ jobs:
       ############################################################
 
       - name: Terraform Apply
-
-        if: github.event.inputs.terraform_action == 'apply'
-
+        if: inputs.terraform_action == 'apply'
         run: |
           terraform apply \
             -auto-approve \
@@ -111,9 +105,7 @@ jobs:
       ############################################################
 
       - name: Terraform Destroy
-
-        if: github.event.inputs.terraform_action == 'destroy'
-
+        if: inputs.terraform_action == 'destroy'
         run: |
           terraform destroy \
             -var-file="terraform.tfvars" \
