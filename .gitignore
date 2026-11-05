@@ -38,3 +38,71 @@ C:\Aws_Terraform_Code\Environment\Database\Dynamodb\Prod\.terraform
 
 C:\Aws_Terraform_Code\Modules\S3-Replication\S3-Bucket\.terraform
 C:\Aws_Terraform_Code\Environment\S3-Replication\Dev\.terraform.lock.hcl
+
+
+
+# ==========================================
+# Terraform - Downloaded Providers & Modules
+# ==========================================
+ 
+# Ignore all .terraform directories at any depth
+**/.terraform/
+ 
+# ==========================================
+# Terraform State Files (may contain secrets)
+# ==========================================
+ 
+*.tfstate
+*.tfstate.*
+**/errored.tfstate
+ 
+# ==========================================
+# Terraform Plan Files
+# ==========================================
+ 
+*.tfplan
+tfplan
+crash.log
+crash.*.log
+ 
+# ==========================================
+# Terraform Variables - Sensitive Values
+# ==========================================
+ 
+ 
+# Uncomment if you want to track an example file
+# !terraform.tfvars.example
+ 
+# ==========================================
+# Terraform Override Files
+# ==========================================
+ 
+override.tf
+override.tf.json
+*_override.tf
+*_override.tf.json
+ 
+# ==========================================
+# Terraform CLI Configuration
+# ==========================================
+ 
+.terraformrc
+terraform.rc
+ 
+# ==========================================
+# Private Keys and Credentials
+# ==========================================
+ 
+*.pem
+*.key
+*.p12
+*.pfx
+*.pub
+.aws/
+*.terraform.lock.hcl
+ 
+**/.terraform.lock.hcl
+see less
+Reply in thread
+has context menu
+Post in channel
