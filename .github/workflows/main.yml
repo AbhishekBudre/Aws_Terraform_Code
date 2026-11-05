@@ -1,0 +1,113 @@
+
+name: abhi.space | Cross-Region 3 VPC Peering
+
+on:
+  workflow_dispatch:
+    inputs:
+      terraform_action:
+        description: "Select Terraform Action"
+        required: true
+        default: apply
+        type: choice
+        options:
+          - apply
+          - destroy
+
+permissions:
+  id-token: write
+  contents: read
+
+jobs:
+  terraform:
+
+    name: Deploy Cross-Region VPC Peering
+
+    runs-on: ubuntu-22.04
+
+    environment:
+      name: Development
+
+    defaults:
+      run:
+        shell: bash
+        working-directory: Environment/vpc-peering/Prod
+
+    steps:
+
+      ############################################################
+      # Checkout Repository
+      ############################################################
+
+      - name: Checkout Repository
+        uses: actions/checkout@v4
+
+      ############################################################
+      # Configure AWS Credentials using GitHub OIDC
+      ############################################################
+
+      - name: Configure AWS Credentials
+        uses: aws-actions/configure-aws-credentials@v5
+        with:
+          role-to-assume: ${{ secrets.AWS_ROLE_ARN }}
+          aws-region: ap-south-1
+
+      ############################################################
+      # Setup Terraform
+      ############################################################
+
+      - name: Setup Terraform
+        uses: hashicorp/setup-terraform@v3
+
+      ############################################################
+      # Terraform Init
+      ############################################################
+
+      - name: Terraform Init
+        run: terraform init
+
+      ############################################################
+      # Terraform Format Check
+      ############################################################
+
+      - name: Terraform Format
+        run: terraform fmt -check -recursive
+
+      ############################################################
+      # Terraform Validate
+      ############################################################
+
+      - name: Terraform Validate
+        run: terraform validate
+
+      ############################################################
+      # Terraform Plan
+      ############################################################
+
+      - name: Terraform Plan
+        if: inputs.terraform_action == 'apply'
+        run: |
+          terraform plan \
+            -var-file="terraform.tfvars" \
+            -out=tfplan
+
+      ############################################################
+      # Terraform Apply
+      ############################################################
+
+      - name: Terraform Apply
+        if: inputs.terraform_action == 'apply'
+        run: |
+          terraform apply \
+            -auto-approve \
+            tfplan
+
+      ############################################################
+      # Terraform Destroy
+      ############################################################
+
+      - name: Terraform Destroy
+        if: inputs.terraform_action == 'destroy'
+        run: |
+          terraform destroy \
+            -var-file="terraform.tfvars" \
+            -auto-appro
