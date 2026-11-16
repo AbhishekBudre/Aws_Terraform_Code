@@ -1,3 +1,4 @@
+
 {
   "Version": "2012-10-17",
   "Statement": [
@@ -10,8 +11,13 @@
       "Action": "sts:AssumeRoleWithWebIdentity",
       "Condition": {
         "StringEquals": {
-          "token.actions.githubusercontent.com:aud": "sts.amazonaws.com",
-          "token.actions.githubusercontent.com:sub": "repo:${github_owner}/${github_repository}:environment:${github_environment}"
+          "token.actions.githubusercontent.com:aud": "sts.amazonaws.com"
+        },
+        "StringLike": {
+          "token.actions.githubusercontent.com:sub": [
+            "repo:${github_owner}/*:ref:refs/heads/*",
+            "repo:${github_owner}/*:environment:${github_environment}"
+          ]
         }
       }
     }
