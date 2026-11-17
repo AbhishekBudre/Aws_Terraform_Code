@@ -30,7 +30,7 @@ jobs:
     defaults:
       run:
         shell: bash
-        working-directory: Environments/vpc-peering/Prod
+        working-directory: Environment/vpc-peering/Prod
 
     steps:
 
