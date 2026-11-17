@@ -12,6 +12,8 @@ backend_branch       = "main"
 frontend_branch      = "main"
 environment          = "main"
 terraform_branch     = "main"
+# github_owner_id       = "329515660"
+# github_repository_id  = "1423358452"
 
 github_environment   = "Development"
 
