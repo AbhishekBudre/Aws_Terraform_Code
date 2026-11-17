@@ -1,11 +1,11 @@
-terraform_repository = "*"
-frontend_repository  = "main"
-backend_repository   = "main"
+terraform_repository = "Aws_Terraform_Code"
+frontend_repository  = "Aws_Frontend_Code"
+backend_repository   = "Aws_Backend_Code"
 
 aws_region           = "ap-south-1"
 
 github_owner         = "AbhishekBudre"
-project_name         = "terraform-code-github-action-pipeline-oidc"
+project_name         = "oidc"
 
 github_branch        = "main"
 backend_branch       = "main"
